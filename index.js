@@ -7,6 +7,9 @@ if(localStorage.getItem("counts") == null){
 }
 else{
     myCounts = JSON.parse(localStorage.getItem("counts"));
+    for(let i = 0; i < myCounts.length; i++){
+        document.getElementById("past-counts").textContent += " - " + myCounts[i];
+    }
 }
 
 let count = 0;
@@ -24,12 +27,9 @@ function save(){
     myCounts = JSON.parse(localStorage.getItem("counts"));
     myCounts.push(count);
     localStorage.setItem("counts", JSON.stringify(myCounts));
-    console.log("saving");
-    console.log(myCounts)
     document.getElementById("past-counts").textContent = pastCount;
     for(let i = 0; i < myCounts.length; i++){
         document.getElementById("past-counts").textContent += " - " + myCounts[i];
-        console.log("printing");
     }
     count = 0;
     countEl.textContent = count;
